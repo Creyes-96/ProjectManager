@@ -3,8 +3,28 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.0.2'
 
+#GEMA DE POSTGRES
+gem "pg", ">= 0.18", "< 2.0"
+
+# Gemfile
+gem 'rexml', '~> 3.2.4'
+
+#GEMA DE BULMA
+gem 'rails-assets-bulma', source: 'https://rails-assets.org'
+
+# Run against this stable release RSPEC-RAILS GEM
+group :development, :test do
+  gem 'rspec-rails', '~> 5.0.0'
+end
+
+#FAKER
+gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
+
+#devise
+gem 'devise'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
-gem 'rails', '~> 6.1.4', '>= 6.1.4.1'
+gem 'rails', '~> 6.1.4'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3', '~> 1.4'
 # Use Puma as the app server

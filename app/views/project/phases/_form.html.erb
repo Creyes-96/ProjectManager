@@ -1,0 +1,17 @@
+<%= form_with(model: project_phase) do |form| %>
+  <% if project_phase.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(project_phase.errors.count, "error") %> prohibited this project_phase from being saved:</h2>
+
+      <ul>
+        <% project_phase.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
