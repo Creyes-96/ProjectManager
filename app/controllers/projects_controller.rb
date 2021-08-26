@@ -64,6 +64,6 @@ class ProjectsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def project_params
-      params.fetch(:project, {})
+      params.fetch(:project, {}).permit(:name, :description, :state, :initial_date, :end_date)
     end
 end

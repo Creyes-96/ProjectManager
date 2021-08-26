@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(version: 2021_08_26_031923) do
     t.string "name"
     t.text "description"
     t.string "state"
-    t.date "intial_date"
+    t.date "initial_date"
     t.date "end_date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
