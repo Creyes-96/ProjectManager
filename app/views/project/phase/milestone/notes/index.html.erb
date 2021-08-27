@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Project Phase Milestone Notes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th class="">ID | </th>
+      <th class="">Note | </th>
+      <th class="">User | </th>
+      <th class="">Phase ID</th>
+      <th colspan="5"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @project_phase_milestone_notes.each do |project_phase_milestone_note| %>
+      <tr>
+        <td class=""><%= project_phase_milestone_note.id %></td>
+        <td class=""><%= project_phase_milestone_note.note %></td>
+        <td class=""><%= project_phase_milestone_note.users_id %></td>
+        <td class=""><%= project_phase_milestone_note.project_phase_milestones_id %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Project Phase Milestone Note', new_project_phase_milestone_note_path %>

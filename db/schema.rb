@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_26_031923) do
+ActiveRecord::Schema.define(version: 2021_08_27_143455) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,16 @@ ActiveRecord::Schema.define(version: 2021_08_26_031923) do
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "project_phases_id"
     t.index ["project_phases_id"], name: "index_project_phase_activities_on_project_phases_id"
+  end
+
+  create_table "project_phase_milestone_notes", force: :cascade do |t|
+    t.string "note"
+    t.bigint "project_phase_milestones_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "users_id"
+    t.index ["project_phase_milestones_id"], name: "notes_index"
+    t.index ["users_id"], name: "index_project_phase_milestone_notes_on_users_id"
   end
 
   create_table "project_phase_milestones", force: :cascade do |t|
@@ -67,16 +77,6 @@ ActiveRecord::Schema.define(version: 2021_08_26_031923) do
     t.index ["users_id"], name: "index_teams_on_users_id"
   end
 
-  create_table "user_notes", force: :cascade do |t|
-    t.text "note"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.bigint "users_id"
-    t.bigint "project_phase_milestones_id"
-    t.index ["project_phase_milestones_id"], name: "index_user_notes_on_project_phase_milestones_id"
-    t.index ["users_id"], name: "index_user_notes_on_users_id"
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "first_name", default: "", null: false
     t.string "last_name", default: "", null: false
@@ -98,11 +98,11 @@ ActiveRecord::Schema.define(version: 2021_08_26_031923) do
   end
 
   add_foreign_key "project_phase_activities", "project_phases", column: "project_phases_id"
+  add_foreign_key "project_phase_milestone_notes", "project_phase_milestones", column: "project_phase_milestones_id"
+  add_foreign_key "project_phase_milestone_notes", "users", column: "users_id"
   add_foreign_key "project_phase_milestones", "project_phases", column: "project_phases_id"
   add_foreign_key "project_phases", "projects", column: "projects_id"
   add_foreign_key "projects", "users", column: "users_id"
   add_foreign_key "teams", "projects", column: "projects_id"
   add_foreign_key "teams", "users", column: "users_id"
-  add_foreign_key "user_notes", "project_phase_milestones", column: "project_phase_milestones_id"
-  add_foreign_key "user_notes", "users", column: "users_id"
 end

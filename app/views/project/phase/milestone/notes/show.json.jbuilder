@@ -1,0 +1,1 @@
+json.partial! "project_phase_milestone_notes/project_phase_milestone_note", project_phase_milestone_note: @project_phase_milestone_note
