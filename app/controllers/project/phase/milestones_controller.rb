@@ -22,10 +22,11 @@ class Project::Phase::MilestonesController < ApplicationController
   # POST /project/phase/milestones or /project/phase/milestones.json
   def create
     @project_phase_milestone = Project::Phase::Milestone.new(project_phase_milestone_params)
+    @project_phase_milestone.project_phase = Project::Phase.find_by_id(params[:phase_id])
 
     respond_to do |format|
       if @project_phase_milestone.save
-        format.html { redirect_to @project_phase_milestone, notice: "Milestone was successfully created." }
+        format.html { redirect_to project_phase_milestones_url, notice: "Milestone was successfully created." }
         format.json { render :show, status: :created, location: @project_phase_milestone }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -64,6 +65,6 @@ class Project::Phase::MilestonesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def project_phase_milestone_params
-      params.fetch(:project_phase_milestone, {})
+      params.fetch(:project_phase_milestone, {}).permit(:name, :description)
     end
 end

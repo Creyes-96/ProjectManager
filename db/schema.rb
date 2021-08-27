@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 2021_08_26_031923) do
   create_table "project_phase_activities", force: :cascade do |t|
     t.string "name"
     t.text "description"
-    t.date "initial_date"
+    t.date "start_date"
     t.date "end_date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 2021_08_26_031923) do
   create_table "project_phases", force: :cascade do |t|
     t.string "name"
     t.text "description"
-    t.date "initial_date"
+    t.date "start_date"
     t.date "end_date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(version: 2021_08_26_031923) do
     t.string "name"
     t.text "description"
     t.string "state"
-    t.date "initial_date"
+    t.date "start_date"
     t.date "end_date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -78,8 +78,8 @@ ActiveRecord::Schema.define(version: 2021_08_26_031923) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "firstname", default: "", null: false
-    t.string "lastname", default: "", null: false
+    t.string "first_name", default: "", null: false
+    t.string "last_name", default: "", null: false
     t.string "username", default: "", null: false
     t.string "email", default: "", null: false
     t.string "privilege", default: "", null: false
@@ -90,8 +90,8 @@ ActiveRecord::Schema.define(version: 2021_08_26_031923) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["firstname"], name: "index_users_on_firstname"
-    t.index ["lastname"], name: "index_users_on_lastname"
+    t.index ["first_name"], name: "index_users_on_first_name"
+    t.index ["last_name"], name: "index_users_on_last_name"
     t.index ["privilege"], name: "index_users_on_privilege"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true

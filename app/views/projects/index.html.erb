@@ -5,30 +5,29 @@
 <table>
   <thead>
     <tr>
-      <th class="">Project ID</th>
       <th class="">Name</th>
       <th class="">Description</th>
       <th class="">State</th>
-      <th class="">Initial date</th>
+      <th class="">Start date</th>
       <th class="">End date</th>
       <th class="">User ID</th>
-      <th colspan="7"></th>
+      <th colspan="6"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @projects.each do |project| %>
       <tr>
-        <td class=""><%= project.id %></td>
         <td class=""><%= project.name %></td>
         <td class=""><%= project.description %></td>
         <td class=""><%= project.state %></td>
-        <td class=""><%= project.initial_date %></td>
+        <td class=""><%= project.start_date %></td>
         <td class=""><%= project.end_date %></td>
         <td class=""><%= project.users_id %></td>
         <td><%= link_to 'Show', project %></td>
         <td><%= link_to 'Edit', edit_project_path(project) %></td>
         <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        
       </tr>
     <% end %>
   </tbody>

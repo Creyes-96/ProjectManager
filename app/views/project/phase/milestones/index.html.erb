@@ -5,16 +5,22 @@
 <table>
   <thead>
     <tr>
-      <th colspan="3"></th>
+      <th class="">ID</th>
+      <th class="">Milestone</th>
+      <th class="">Description</th>
+      <th class="">Phase ID</th>
+      <th colspan="5"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @project_phase_milestones.each do |project_phase_milestone| %>
       <tr>
-        <td><%= link_to 'Show', project_phase_milestone %></td>
-        <td><%= link_to 'Edit', edit_project_phase_milestone_path(project_phase_milestone) %></td>
-        <td><%= link_to 'Destroy', project_phase_milestone, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td class=""><%= project_phase_milestone.id %></td>
+        <td class=""><%= project_phase_milestone.name %></td>
+        <td class=""><%= project_phase_milestone.description %></td>
+        <td class=""><%= project_phase_milestone.project_phases_id %></td>
+
       </tr>
     <% end %>
   </tbody>

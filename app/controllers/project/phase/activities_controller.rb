@@ -3,7 +3,7 @@ class Project::Phase::ActivitiesController < ApplicationController
 
   # GET /project/phase/activities or /project/phase/activities.json
   def index
-    @project_phase_activities = Project::Phase::Activity.all
+    @project_phase_activities = Project::Phase::Activity.where(project_phases_id: params[:phase_id])
   end
 
   # GET /project/phase/activities/1 or /project/phase/activities/1.json
@@ -23,9 +23,11 @@ class Project::Phase::ActivitiesController < ApplicationController
   def create
     @project_phase_activity = Project::Phase::Activity.new(project_phase_activity_params)
 
+    @project_phase_activity.project_phase = Project::Phase.find_by_id(params[:phase_id])
+
     respond_to do |format|
       if @project_phase_activity.save
-        format.html { redirect_to @project_phase_activity, notice: "Activity was successfully created." }
+        format.html { redirect_to project_phase_activities_url, notice: "Activity was successfully created." }
         format.json { render :show, status: :created, location: @project_phase_activity }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -64,6 +66,6 @@ class Project::Phase::ActivitiesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def project_phase_activity_params
-      params.fetch(:project_phase_activity, {})
+      params.fetch(:project_phase_activity, {}).permit(:name, :description, :start_date, :end_date)
     end
 end

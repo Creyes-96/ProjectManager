@@ -16,8 +16,8 @@
 </p>
 
 <p>
-  <strong>Initial date:</strong>
-  <%= @project.initial_date %>
+  <strong>Start date:</strong>
+  <%= @project.start_date %>
 </p>
 
 <p>
@@ -26,4 +26,7 @@
 </p>
 
 <%= link_to 'Edit', edit_project_path(@project) %> |
-<%= link_to 'Back', projects_path %>
+<%= link_to 'Back', projects_path %> |
+
+<%= link_to 'Phases', project_phases_url(@project,@phases) %> 
+

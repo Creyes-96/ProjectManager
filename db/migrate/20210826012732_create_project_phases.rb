@@ -3,7 +3,7 @@ class CreateProjectPhases < ActiveRecord::Migration[6.1]
     create_table :project_phases do |t|
       t.string :name
       t.text :description
-      t.date :initial_date
+      t.date :start_date
       t.date :end_date
       t.timestamps
     end

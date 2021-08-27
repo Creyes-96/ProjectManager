@@ -3,7 +3,7 @@ class Project::PhasesController < ApplicationController
 
   # GET /project/phases or /project/phases.json
   def index
-    @project_phases = Project::Phase.all
+    @project_phases = Project::Phase.where(projects_id: params[:project_id])
   end
 
   # GET /project/phases/1 or /project/phases/1.json
@@ -22,10 +22,13 @@ class Project::PhasesController < ApplicationController
   # POST /project/phases or /project/phases.json
   def create
     @project_phase = Project::Phase.new(project_phase_params)
+    #puts params[:project_id]
+    
+    @project_phase.project = Project.find_by_id(params[:project_id])
 
     respond_to do |format|
       if @project_phase.save
-        format.html { redirect_to @project_phase, notice: "Phase was successfully created." }
+        format.html { redirect_to project_phases_url, notice: "Phase was successfully created." }
         format.json { render :show, status: :created, location: @project_phase }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +41,7 @@ class Project::PhasesController < ApplicationController
   def update
     respond_to do |format|
       if @project_phase.update(project_phase_params)
-        format.html { redirect_to @project_phase, notice: "Phase was successfully updated." }
+        format.html { redirect_to project_phases_url, notice: "Phase was successfully updated." }
         format.json { render :show, status: :ok, location: @project_phase }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -64,6 +67,6 @@ class Project::PhasesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def project_phase_params
-      params.fetch(:project_phase, {}).permit(:name, :description, :initial_date, :end_date, :projects_id)
+      params.fetch(:project_phase, {}).permit(:name, :description, :start_date, :end_date)
     end
 end

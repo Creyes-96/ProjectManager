@@ -4,8 +4,8 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.1]
   def change
     create_table :users do |t|
       ## Database authenticatable
-      t.string :firstname,          null: false, default: ""
-      t.string :lastname,           null: false, default: ""
+      t.string :first_name,          null: false, default: ""
+      t.string :last_name,           null: false, default: ""
       t.string :username,           null: false, default: ""
       t.string :email,              null: false, default: ""
       t.string :privilege,          null: false, default: ""
@@ -40,8 +40,8 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.1]
       t.timestamps null: false
     end
     add_reference :projects, :users, foreign_key:true
-    add_index :users, :firstname,            unique: false
-    add_index :users, :lastname,             unique: false
+    add_index :users, :first_name,            unique: false
+    add_index :users, :last_name,             unique: false
     add_index :users, :username,             unique: true
     add_index :users, :email,                unique: true
     add_index :users, :privilege,            unique: false

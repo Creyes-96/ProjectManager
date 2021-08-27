@@ -22,11 +22,16 @@ class User::NotesController < ApplicationController
   # POST /user/notes or /user/notes.json
   def create
     @user_note = User::Note.new(user_note_params)
-
+    puts "gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg"
+    puts params
+    puts "gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg"
+    @user_note.user = current_user
+    
+ 
     respond_to do |format|
       if @user_note.save
         format.html { redirect_to @user_note, notice: "Note was successfully created." }
-        format.json { render :show, status: :created, location: @user_note }
+        format.json { render :show, status: :created, location: @users_note }
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @user_note.errors, status: :unprocessable_entity }
@@ -64,6 +69,6 @@ class User::NotesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_note_params
-      params.fetch(:user_note, {})
+      params.fetch(:user_note, {}).permit(:note)
     end
 end

@@ -5,26 +5,28 @@
 <table>
   <thead>
     <tr>
+      <th class="">Phase ID</th>
       <th class="">Name</th>
       <th class="">Description</th>
-      <th class="">Initial date</th>
+      <th class="">Start date</th>
       <th class="">End date</th>
       <th class="">Project ID</th>
-      <th colspan="6"></th>
+      <th colspan="7"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @project_phases.each do |project_phase| %>
       <tr>
+        
+        <td class=""><%= project_phase.id %></td>
         <td class=""><%= project_phase.name %></td>
         <td class=""><%= project_phase.description %></td>
-        <td class=""><%= project_phase.initial_date %></td>
+        <td class=""><%= project_phase.start_date %></td>
         <td class=""><%= project_phase.end_date %></td>
         <td class=""><%= project_phase.projects_id %></td>
-        <td><%= link_to 'Show', project_phase %></td>
-        <td><%= link_to 'Edit', edit_project_phase_path(project_phase) %></td>
-        <td><%= link_to 'Destroy', project_phase, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+ 
+
       </tr>
     <% end %>
   </tbody>

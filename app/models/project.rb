@@ -1,3 +1,3 @@
 class Project < ApplicationRecord
-    #belongs_to :users, class_name: 'User'
+    belongs_to :user, foreign_key: 'users_id' 
 end
