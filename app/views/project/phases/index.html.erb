@@ -17,15 +17,17 @@
 
   <tbody>
     <% @project_phases.each do |project_phase| %>
-      <tr>
+        <tr>
         
-        <td class=""><%= project_phase.id %></td>
-        <td class=""><%= project_phase.name %></td>
-        <td class=""><%= project_phase.description %></td>
-        <td class=""><%= project_phase.start_date %></td>
-        <td class=""><%= project_phase.end_date %></td>
-        <td class=""><%= project_phase.projects_id %></td>
- 
+            <td class=""><%= project_phase.id %></td>
+            <td class=""><%= project_phase.name %></td>
+            <td class=""><%= project_phase.description %></td>
+            <td class=""><%= project_phase.start_date %></td>
+            <td class=""><%= project_phase.end_date %></td>
+            <td class=""><%= project_phase.projects_id %></td>
+            <td><%= link_to 'Show', project_phase_url(:id => project_phase.id) %></td>
+            <td><%= link_to 'Edit', edit_project_phase_path(:id => project_phase.id) %></td>
+
 
       </tr>
     <% end %>

@@ -1,4 +1,22 @@
 <p id="notice"><%= notice %></p>
 
+
+<p>
+  <strong>Note:</strong>
+  <%= @project_phase_milestone_note.note %>
+</p>
+
+<p>
+  <strong>Project Phase ID:</strong>
+  <%= @project_phase_milestone_note.project_phase_milestones_id %>
+</p>
+
+<p>
+  <strong>User ID:</strong>
+  <%= @project_phase_milestone_note.users_id %>
+</p>
+
+
+
 <%= link_to 'Edit', edit_project_phase_milestone_note_path(@project_phase_milestone_note) %> |
 <%= link_to 'Back', project_phase_milestone_notes_path %>

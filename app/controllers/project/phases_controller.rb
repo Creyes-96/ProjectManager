@@ -39,6 +39,7 @@ class Project::PhasesController < ApplicationController
 
   # PATCH/PUT /project/phases/1 or /project/phases/1.json
   def update
+    puts @project_phase.id ,"sddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
     respond_to do |format|
       if @project_phase.update(project_phase_params)
         format.html { redirect_to project_phases_url, notice: "Phase was successfully updated." }
@@ -54,7 +55,7 @@ class Project::PhasesController < ApplicationController
   def destroy
     @project_phase.destroy
     respond_to do |format|
-      format.html { redirect_to project_phases_url, notice: "Phase was successfully destroyed." }
+      format.html { redirect_to project_phases_path, notice: "Phase was successfully destroyed." }
       format.json { head :no_content }
     end
   end
