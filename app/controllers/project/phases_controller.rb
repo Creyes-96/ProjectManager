@@ -42,7 +42,7 @@ class Project::PhasesController < ApplicationController
     puts @project_phase.id ,"sddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
     respond_to do |format|
       if @project_phase.update(project_phase_params)
-        format.html { redirect_to project_phases_url, notice: "Phase was successfully updated." }
+        format.html { redirect_to project_phases_url(@project_phase.project,@phases), notice: "Phase was successfully updated." }
         format.json { render :show, status: :ok, location: @project_phase }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -55,7 +55,7 @@ class Project::PhasesController < ApplicationController
   def destroy
     @project_phase.destroy
     respond_to do |format|
-      format.html { redirect_to project_phases_path, notice: "Phase was successfully destroyed." }
+      format.html { redirect_to project_phases_url, notice: "Phase was successfully destroyed." }
       format.json { head :no_content }
     end
   end
