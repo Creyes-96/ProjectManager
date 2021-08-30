@@ -3,7 +3,7 @@ class Project::Phase::MilestonesController < ApplicationController
 
   # GET /project/phase/milestones or /project/phase/milestones.json
   def index
-    @project_phase_milestones = Project::Phase::Milestone.all
+    @project_phase_milestones = Project::Phase::Milestone.where(project_phases_id: params[:phase_id])
   end
 
   # GET /project/phase/milestones/1 or /project/phase/milestones/1.json
@@ -39,7 +39,7 @@ class Project::Phase::MilestonesController < ApplicationController
   def update
     respond_to do |format|
       if @project_phase_milestone.update(project_phase_milestone_params)
-        format.html { redirect_to @project_phase_milestone, notice: "Milestone was successfully updated." }
+        format.html { redirect_to "/projects/#{@project_phase_milestone.project_phase.project.id}/phases/#{@project_phase_milestone.project_phase.id}/milestones/", notice: "Milestone was successfully updated." }
         format.json { render :show, status: :ok, location: @project_phase_milestone }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,7 +52,7 @@ class Project::Phase::MilestonesController < ApplicationController
   def destroy
     @project_phase_milestone.destroy
     respond_to do |format|
-      format.html { redirect_to project_phase_milestones_url, notice: "Milestone was successfully destroyed." }
+      format.html { redirect_to "/projects/#{@project_phase_milestone.project_phase.project.id}/phases/#{@project_phase_milestone.project_phase.id}/milestones/", notice: "Milestone was successfully destroyed." }
       format.json { head :no_content }
     end
   end

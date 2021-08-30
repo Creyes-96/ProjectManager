@@ -18,5 +18,5 @@
 
 
 
-<%= link_to 'Edit', edit_project_phase_milestone_note_path(@project_phase_milestone_note) %> |
+<%= link_to 'Edit', "/projects/#{@project_phase_milestone_note.project_phase_milestone.project_phase.project.id}/phases/#{@project_phase_milestone_note.project_phase_milestone.project_phase.id}/milestones/#{@project_phase_milestone_note.project_phase_milestone.id}/notes/#{@project_phase_milestone_note.id}/edit/" %> |
 <%= link_to 'Back', project_phase_milestone_notes_path %>

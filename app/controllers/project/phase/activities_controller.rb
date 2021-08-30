@@ -25,6 +25,7 @@ class Project::Phase::ActivitiesController < ApplicationController
 
     @project_phase_activity.project_phase = Project::Phase.find_by_id(params[:phase_id])
 
+
     respond_to do |format|
       if @project_phase_activity.save
         format.html { redirect_to project_phase_activities_url, notice: "Activity was successfully created." }
@@ -40,7 +41,7 @@ class Project::Phase::ActivitiesController < ApplicationController
   def update
     respond_to do |format|
       if @project_phase_activity.update(project_phase_activity_params)
-        format.html { redirect_to @project_phase_activity, notice: "Activity was successfully updated." }
+        format.html { redirect_to "/projects/#{@project_phase_activity.project_phase.project.id}/phases/#{@project_phase_activity.project_phase.id}/activities/", notice: "Activity was successfully updated." }
         format.json { render :show, status: :ok, location: @project_phase_activity }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -53,7 +54,7 @@ class Project::Phase::ActivitiesController < ApplicationController
   def destroy
     @project_phase_activity.destroy
     respond_to do |format|
-      format.html { redirect_to project_phase_activities_url, notice: "Activity was successfully destroyed." }
+      format.html { redirect_to "/projects/#{@project_phase_activity.project_phase.project.id}/phases/#{@project_phase_activity.project_phase.id}/activities/", notice: "Activity was successfully updated." }
       format.json { head :no_content }
     end
   end

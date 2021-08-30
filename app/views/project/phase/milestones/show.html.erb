@@ -1,4 +1,20 @@
 <p id="notice"><%= notice %></p>
 
-<%= link_to 'Edit', edit_project_phase_milestone_path(@project_phase_milestone) %> |
+<p>
+  <strong>Name:</strong>
+  <%= @project_phase_milestone.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @project_phase_milestone.description %>
+</p>
+
+<p>
+  <strong>Phase ID:</strong>
+  <%= @project_phase_milestone.project_phases_id %>
+</p>
+
+<%= link_to 'Edit', "/projects/#{@project_phase_milestone.project_phase.project.id}/phases/#{@project_phase_milestone.project_phase.id}/milestones/#{@project_phase_milestone.id}/edit" %> |
+<%= link_to 'Notes', "/projects/#{@project_phase_milestone.project_phase.project.id}/phases/#{@project_phase_milestone.project_phase.id}/milestones/#{@project_phase_milestone.id}/notes" %> | 
 <%= link_to 'Back', project_phase_milestones_path %>

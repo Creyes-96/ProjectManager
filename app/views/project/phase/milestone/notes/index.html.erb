@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-
+<%= link_to 'Back', project_phase_milestones_path %>
 <h1>Project Phase Milestone Notes</h1>
 
 <table>
@@ -20,6 +20,9 @@
         <td class=""><%= project_phase_milestone_note.note %></td>
         <td class=""><%= project_phase_milestone_note.users_id %></td>
         <td class=""><%= project_phase_milestone_note.project_phase_milestones_id %></td>
+        <td><%= link_to 'Show', project_phase_milestone_note_url(:id => project_phase_milestone_note.id) %></td>
+        <td><%= link_to 'Edit', edit_project_phase_milestone_note_url(:id => project_phase_milestone_note.id) %></td>
+        <td><%= link_to 'Destroy', project_phase_milestone_note_path(project_phase_milestone_note.project_phase_milestone, :id => project_phase_milestone_note.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

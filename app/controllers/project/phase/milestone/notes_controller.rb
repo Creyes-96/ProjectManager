@@ -40,7 +40,7 @@ class Project::Phase::Milestone::NotesController < ApplicationController
     def update
         respond_to do |format|
             if @project_phase_milestone_note.update(project_phase_milestone_note_params)
-                format.html { redirect_to @project_phase_milestone_note, notice: "Note was successfully updated." }
+                format.html { redirect_to "/projects/#{@project_phase_milestone_note.project_phase_milestone.project_phase.project.id}/phases/#{@project_phase_milestone_note.project_phase_milestone.project_phase.id}/milestones/#{@project_phase_milestone_note.project_phase_milestone.id}/notes/#{@project_phase_milestone_note.id}" , notice: "Note was successfully updated." }
                 format.json { render :show, status: :ok, location: @project_phase_milestone_note }
             else
                 format.html { render :edit, status: :unprocessable_entity }
@@ -53,7 +53,7 @@ class Project::Phase::Milestone::NotesController < ApplicationController
     def destroy
         @project_phase_milestone_note.destroy
         respond_to do |format|
-            format.html { redirect_to project_phase_milestone_notes_url, notice: "Note was successfully destroyed." }
+            format.html { redirect_to "/projects/#{@project_phase_milestone_note.project_phase_milestone.project_phase.project.id}/phases/#{@project_phase_milestone_note.project_phase_milestone.project_phase.id}/milestones/#{@project_phase_milestone_note.project_phase_milestone.id}/notes", notice: "Note was successfully destroyed." }
             format.json { head :no_content }
         end
     end

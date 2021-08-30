@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-
+<%= link_to 'Back', project_phases_path %> 
 <h1>Project Phase Activities</h1>
 
 <table>
@@ -18,12 +18,15 @@
   <tbody>
     <% @project_phase_activities.each do |project_phase_activity| %>
       <tr>
+        <td class=""><%= project_phase_activity.id %></td>
         <td class=""><%= project_phase_activity.name %></td>
         <td class=""><%= project_phase_activity.description %></td>
         <td class=""><%= project_phase_activity.start_date %></td>
         <td class=""><%= project_phase_activity.end_date %></td>
         <td class=""><%= project_phase_activity.project_phases_id %></td>
-
+        <td><%= link_to 'Show', project_phase_activity_url(:id => project_phase_activity.id) %></td>
+        <td><%= link_to 'Edit', edit_project_phase_activity_path(:id => project_phase_activity.id) %></td>
+        <td><%= link_to 'Destroy', project_phase_activity_path(project_phase_activity.project_phase, :id => project_phase_activity.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
