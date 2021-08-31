@@ -58,7 +58,7 @@ array_phases = ['Planificación', 'Implementación', 'Testing', 'Prototipado']
 }
 
 50.times{
-    phase = Project::Phase::Activity.create(
+    activity = Project::Phase::Activity.create(
         name: Faker::Hobby.activity, 
         description: Faker::Lorem.sentence, 
         start_date: Faker::Date.between(from: '2021-08-31', to: '2021-09-30'), 
@@ -68,10 +68,18 @@ array_phases = ['Planificación', 'Implementación', 'Testing', 'Prototipado']
 }
 
 50.times{
-    phase = Project::Phase::Milestone.create(
+    milestone = Project::Phase::Milestone.create(
         name: Faker::Hobby.activity, 
         description: Faker::Lorem.sentence, 
         project_phases_id: Faker::Number.between(from: 1, to: 18)
+    )
+}
+
+50.times{
+    note = Project::Phase::Milestone::Note.create(
+        note: Faker::Lorem.sentence, 
+        project_phase_milestones_id: Faker::Number.between(from: 1, to: 50), 
+        users_id: Faker::Number.between(from: 1, to: 3)
     )
 }
 

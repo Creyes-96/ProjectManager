@@ -2,7 +2,7 @@
 <%= link_to 'Back', projects_path %>
 <h1>Project Phases</h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th class="">Phase ID</th>
@@ -11,6 +11,7 @@
       <th class="">Start date</th>
       <th class="">End date</th>
       <th class="">Project ID</th>
+      <th class="">Project</th>
       <th colspan="7"></th>
     </tr>
   </thead>
@@ -25,6 +26,7 @@
             <td class=""><%= project_phase.start_date %></td>
             <td class=""><%= project_phase.end_date %></td>
             <td class=""><%= project_phase.projects_id %></td>
+            <td class=""><%= project_phase.project.name %></td>
             <td><%= link_to 'Show', project_phase_url(:id => project_phase.id) %></td>
             <td><%= link_to 'Edit', edit_project_phase_path(:id => project_phase.id) %></td>
             <td><%= link_to 'Destroy', project_phase_path(project_phase.project, project_phase), method: :delete, data: { confirm: 'Are you sure?' } %></td>

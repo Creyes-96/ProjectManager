@@ -2,14 +2,17 @@
 <%= link_to 'Back', project_phase_milestones_path %>
 <h1>Project Phase Milestone Notes</h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
-      <th class="">ID | </th>
-      <th class="">Note | </th>
-      <th class="">User | </th>
-      <th class="">Username | </th>
-      <th class="">Phase ID</th>
+      <th class="">ID</th>
+      <th class="">Note</th>
+      <!--<th class="">User</th>-->
+      <th class="">Username</th>
+      <th class="">Milestone ID</th>
+      <th class="">Milestone</th>
+      <th class="">Phase</th>
+      <th class="">Project</th>
       <th colspan="5"></th>
     </tr>
   </thead>
@@ -19,9 +22,12 @@
       <tr>
         <td class=""><%= project_phase_milestone_note.id %></td>
         <td class=""><%= project_phase_milestone_note.note %></td>
-        <td class=""><%= project_phase_milestone_note.users_id %></td>
+        <!--<td class=""><%= project_phase_milestone_note.users_id %></td>-->
         <td class=""><%= project_phase_milestone_note.user.username %></td>
         <td class=""><%= project_phase_milestone_note.project_phase_milestones_id %></td>
+        <td class=""><%= project_phase_milestone_note.project_phase_milestone.name %></td>
+        <td class=""><%= project_phase_milestone_note.project_phase_milestone.project_phase.name %></td>
+        <td class=""><%= project_phase_milestone_note.project_phase_milestone.project_phase.project.name %></td>
         <td><%= link_to 'Show', project_phase_milestone_note_url(:id => project_phase_milestone_note.id) %></td>
         <td><%= link_to 'Edit', edit_project_phase_milestone_note_url(:id => project_phase_milestone_note.id) %></td>
         <td><%= link_to 'Destroy', project_phase_milestone_note_path(project_phase_milestone_note.project_phase_milestone, :id => project_phase_milestone_note.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>

@@ -2,13 +2,15 @@
 <%= link_to 'Back', project_phases_path %> 
 <h1>Project Phase Milestones</h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th class="">ID</th>
       <th class="">Milestone</th>
       <th class="">Description</th>
       <th class="">Phase ID</th>
+      <th class="">Phase</th>
+      <th class="">Project</th>
       <th colspan="5"></th>
     </tr>
   </thead>
@@ -20,6 +22,8 @@
         <td class=""><%= project_phase_milestone.name %></td>
         <td class=""><%= project_phase_milestone.description %></td>
         <td class=""><%= project_phase_milestone.project_phases_id %></td>
+        <td class=""><%= project_phase_milestone.project_phase.name %></td>
+        <td class=""><%= project_phase_milestone.project_phase.project.name %></td>
         <td><%= link_to 'Show', project_phase_milestone_url(:id => project_phase_milestone.id) %></td>
         <td><%= link_to 'Edit', edit_project_phase_milestone_url(:id => project_phase_milestone.id) %></td>
         <td><%= link_to 'Destroy', project_phase_milestone_path(project_phase_milestone.project_phase, :id => project_phase_milestone.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>

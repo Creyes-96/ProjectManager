@@ -25,6 +25,11 @@
   <%= @project.end_date %>
 </p>
 
+<p>
+  <strong>User in charge:</strong>
+  <%= @project.user.username %>
+</p>
+
 <%= link_to 'Edit', edit_project_path(@project) %> |
 <%= link_to 'Back', projects_path %> |
 <%= link_to 'Phases', project_phases_url(@project,@phases) %> 
