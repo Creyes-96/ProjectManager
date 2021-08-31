@@ -2,7 +2,13 @@ Rails.application.routes.draw do
     
     resources :teams
     
-    devise_for :users
+    devise_for :users,
+    controllers: {:registrations => "registrations"}
+
+    as :user do
+        get "/register", to: "registrations#new", as: "register"
+    end
+
     get 'home/index'
     
     resources :projects do 

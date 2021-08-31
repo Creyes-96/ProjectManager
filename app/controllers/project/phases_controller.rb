@@ -39,7 +39,6 @@ class Project::PhasesController < ApplicationController
 
   # PATCH/PUT /project/phases/1 or /project/phases/1.json
   def update
-    puts @project_phase.id ,"sddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
     respond_to do |format|
       if @project_phase.update(project_phase_params)
         format.html { redirect_to project_phases_url(@project_phase.project,@phases), notice: "Phase was successfully updated." }

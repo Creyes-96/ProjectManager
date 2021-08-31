@@ -4,13 +4,13 @@
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="field">
-    <%= f.label :firstname %><br />
-    <%= f.text_field :firstname %>
+    <%= f.label :first_name %><br />
+    <%= f.text_field :first_name %>
   </div>
 
   <div class="field">
-    <%= f.label :lastname %><br />
-    <%= f.text_field :lastname %>
+    <%= f.label :last_name %><br />
+    <%= f.text_field :last_name %>
   </div>
 
   <div class="field">
@@ -25,8 +25,9 @@
 
   <div class="field">
     <%= f.label :privilege %><br />
-    <%= f.text_field :privilege, autofocus: true, autocomplete: "email" %>
+    <%= f.text_field :privilege %>
   </div>
+
 
   <div class="field">
     <%= f.label :password %>
@@ -42,8 +43,9 @@
   </div>
 
   <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
+    <%= f.submit "Sign up"  %>
+  </div> 
+  
 <% end %>
 
 <%= render "devise/shared/links" %>

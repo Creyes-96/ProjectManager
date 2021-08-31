@@ -23,6 +23,9 @@ gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'mast
 #devise
 gem 'devise'
 
+# Gema cancancan 
+gem 'cancancan'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.4'
 # Use sqlite3 as the database for Active Record

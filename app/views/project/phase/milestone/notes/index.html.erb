@@ -8,6 +8,7 @@
       <th class="">ID | </th>
       <th class="">Note | </th>
       <th class="">User | </th>
+      <th class="">Username | </th>
       <th class="">Phase ID</th>
       <th colspan="5"></th>
     </tr>
@@ -19,6 +20,7 @@
         <td class=""><%= project_phase_milestone_note.id %></td>
         <td class=""><%= project_phase_milestone_note.note %></td>
         <td class=""><%= project_phase_milestone_note.users_id %></td>
+        <td class=""><%= project_phase_milestone_note.user.username %></td>
         <td class=""><%= project_phase_milestone_note.project_phase_milestones_id %></td>
         <td><%= link_to 'Show', project_phase_milestone_note_url(:id => project_phase_milestone_note.id) %></td>
         <td><%= link_to 'Edit', edit_project_phase_milestone_note_url(:id => project_phase_milestone_note.id) %></td>
