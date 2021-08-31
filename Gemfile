@@ -9,7 +9,7 @@ gem "pg", ">= 0.18", "< 2.0"
 # An XML toolkit for Ruby
 gem 'rexml', '~> 3.2.4'
 
-# Bulma gem to give styles to the application website
+# Bulma gem to give styles to the web application
 gem 'rails-assets-bulma', source: 'https://rails-assets.org'
 
 # Run against this stable release RSPEC-RAILS GEM
