@@ -1,13 +1,14 @@
 Rails.application.routes.draw do
-    
-    resources :teams
-    
     devise_for :users,
     controllers: {:registrations => "registrations"}
 
     as :user do
-        get "/register", to: "registrations#new", as: "register"
+        get "/registrations", to: "registrations#index"
+        get "/registrations/new", to: "registrations#new"
+        post "/registrations", to: "registrations#create"
     end
+    resources :teams
+    
 
     get 'home/index'
     

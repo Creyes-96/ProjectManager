@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Active users</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th class="">Name</th>
+      <th class="">Description</th>
+      <th class="">State</th>
+      <th class="">Start date</th>
+
+      <th colspan="7"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td class=""><%= user.first_name %></td>
+        <td class=""><%= user.last_name %></td>
+        <td class=""><%= user.username %></td>
+        <td class=""><%= user.email %></td>
+        <td><%= link_to 'Show'%></td>
+        <td><%= link_to 'Edit'%></td>
+        <td><%= link_to 'Destroy'%></td>
+
+        
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+

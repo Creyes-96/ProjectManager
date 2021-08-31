@@ -3,13 +3,13 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.0.2'
 
-#GEMA DE POSTGRES
+# To work with Postgresql databases
 gem "pg", ">= 0.18", "< 2.0"
 
-# Gemfile
+# An XML toolkit for Ruby
 gem 'rexml', '~> 3.2.4'
 
-#GEMA DE BULMA
+# Bulma gem to give styles to the application website
 gem 'rails-assets-bulma', source: 'https://rails-assets.org'
 
 # Run against this stable release RSPEC-RAILS GEM
@@ -17,13 +17,13 @@ group :development, :test do
   gem 'rspec-rails', '~> 5.0.0'
 end
 
-#FAKER
+# A library for generating fake data such as names
 gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
 
-#devise
+# The Devise Gem is users for User Authentication, It creates sign-up and sign-in forms, it also can be used to create user accounts for privacy.
 gem 'devise'
 
-# Gema cancancan 
+# # Authorization library for Ruby and Ruby on Rails which restricts what resources a given user is allowed to access.
 gem 'cancancan'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
