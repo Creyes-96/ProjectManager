@@ -3,12 +3,37 @@
 class Ability
     include CanCan::Ability
 
-    def initializer(user)
-        if user.operador?
-                can :read, :all
-            else
-                can :manage, :all
+    def initialize(user)
+        if user.privilege == "administrador"
+          can :manage, :all
+          
+        elsif user.privilege == "manager"
+            #CAN
+            can :manage, Project::Phase
+            can :manage, Project::Phase::Activity
+            can :manage, Project::Phase::Milestone
+            can :update, Project::Phase::Milestone::Note do |note|
+                note.user == user
+            end
+                        
+            #CAN NOT
+            cannot :manage, User
+            cannot :destroy, Project
             
+
+
+        elsif user.privilege == "operador"
+            #Update
+            can :update, Project
+            cannot :manage, User
+            cannot :manage, Project::Phase
+            cannot :manage, Project::Phase::Milestone
+            cannot :manage, Project::Phase::Activity
+            cannot :manage, Project::Phase::Milestone::Note
+
+            can :update, Project::Phase::Milestone::Note do |note|
+                note.user == user
+            end
         end
  
     

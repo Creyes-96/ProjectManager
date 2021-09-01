@@ -22,10 +22,11 @@
         <td class=""><%= user.username %></td>
         <td class=""><%= user.email %></td>
         <td class=""><%= user.privilege %></td>
+        <% if can? :manage, user%>
         <td><%= link_to 'Show'%></td>
-        <td><%= link_to 'Edit'%></td>
+        <td><%= link_to 'Edit', edit_registration_url(user) %></td>
         <td><%= link_to 'Destroy'%></td>
-
+        <% end %>
         
       </tr>
     <% end %>

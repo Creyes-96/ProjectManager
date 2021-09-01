@@ -1,6 +1,6 @@
 class Project < ApplicationRecord
     belongs_to :user, foreign_key: 'users_id' 
-    has_many :project_phase, dependent: :destroy, class_name: 'Project::Phase', foreign_key: 'projects_id'
+    has_many :project_phases, dependent: :destroy, class_name: 'Project::Phase', foreign_key: 'projects_id'
 
     validates :name, presence: true, allow_blank: false
     validates :description, presence: true, allow_blank: false

@@ -17,10 +17,11 @@
             <li class="nav-item" >
               <%= link_to 'Sign out', destroy_user_session_path, method: :delete, class: 'nav-link'%>
             </li>
-            
+            <% if can? :manage, @user %>
             <li class="nav-item" >
               <%= link_to 'Add user', new_user_registration_path, class: 'nav-link'%>
             </li>
+            <%end%>
 
             <li class="nav-item" >
               <%= link_to 'Users', registrations_path, class: 'nav-link'%>

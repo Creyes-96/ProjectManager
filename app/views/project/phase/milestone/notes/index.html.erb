@@ -29,8 +29,10 @@
         <td class=""><%= project_phase_milestone_note.project_phase_milestone.project_phase.name %></td>
         <td class=""><%= project_phase_milestone_note.project_phase_milestone.project_phase.project.name %></td>
         <td><%= link_to 'Show', project_phase_milestone_note_url(:id => project_phase_milestone_note.id) %></td>
-        <td><%= link_to 'Edit', edit_project_phase_milestone_note_url(:id => project_phase_milestone_note.id) %></td>
-        <td><%= link_to 'Destroy', project_phase_milestone_note_path(project_phase_milestone_note.project_phase_milestone, :id => project_phase_milestone_note.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if can? :update, project_phase_milestone_note %>
+            <td><%= link_to 'Edit', edit_project_phase_milestone_note_url(:id => project_phase_milestone_note.id) %></td>
+            <td><%= link_to 'Destroy', project_phase_milestone_note_path(project_phase_milestone_note.project_phase_milestone, :id => project_phase_milestone_note.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <%end%>
       </tr>
     <% end %>
   </tbody>

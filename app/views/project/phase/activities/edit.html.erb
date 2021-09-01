@@ -1,6 +1,8 @@
-<h1>Editing Project Phase Activity</h1>
+<% if can? :manage, @project_phase_activity %>
+    <h1>Editing Project Phase Activity</h1>
 
-<%= render 'form', project_phase_activity: @project_phase_activity %>
+    <%= render 'form', project_phase_activity: @project_phase_activity %>
 
-<%= link_to 'Show', @project_phase_activity %> |
+    <%= link_to 'Show', @project_phase_activity %> |
+<%end%>
 <%= link_to 'Back', project_phase_activities_path %>

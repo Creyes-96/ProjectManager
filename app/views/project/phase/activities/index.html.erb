@@ -29,8 +29,10 @@
         <td class=""><%= project_phase_activity.project_phase.name %></td>
         <td class=""><%= project_phase_activity.project_phase.project.name %></td>
         <td><%= link_to 'Show', project_phase_activity_url(:id => project_phase_activity.id) %></td>
-        <td><%= link_to 'Edit', edit_project_phase_activity_path(:id => project_phase_activity.id) %></td>
-        <td><%= link_to 'Destroy', project_phase_activity_path(project_phase_activity.project_phase, :id => project_phase_activity.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if can? :manage, project_phase_activity %>
+            <td><%= link_to 'Edit', edit_project_phase_activity_path(:id => project_phase_activity.id) %></td>
+            <td><%= link_to 'Destroy', project_phase_activity_path(project_phase_activity.project_phase, :id => project_phase_activity.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>

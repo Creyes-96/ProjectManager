@@ -1,8 +1,8 @@
 <p id="notice"><%= notice %></p>
 <%= link_to 'Back', projects_path %>
 
-<h1>Project Phases</h1>
 
+<%= @project.name%>
 <table class="table">
   <thead>
     <tr>
@@ -29,9 +29,10 @@
             <td class=""><%= project_phase.projects_id %></td>
             <td class=""><%= project_phase.project.name %></td>
             <td><%= link_to 'Show', project_phase_url(:id => project_phase.id) %></td>
-            <td><%= link_to 'Edit', edit_project_phase_path(:id => project_phase.id) %></td>
-            <td><%= link_to 'Destroy', project_phase_path(project_phase.project, project_phase), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-
+            <% if can? :manage, project_phase%>
+                <td><%= link_to 'Edit', edit_project_phase_path(:id => project_phase.id) %></td>
+                <td><%= link_to 'Destroy', project_phase_path(project_phase.project, project_phase), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <% end %>
 
       </tr>
     <% end %>

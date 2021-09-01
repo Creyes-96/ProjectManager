@@ -1,6 +1,8 @@
-<h1>Editing Project Phase Milestone</h1>
+<% if can? :manage, @project_phase_milestone %>
+    <h1>Editing Project Phase Milestone</h1>
 
-<%= render 'form', project_phase_milestone: @project_phase_milestone %>
+    <%= render 'form', project_phase_milestone: @project_phase_milestone %>
 
-<%= link_to 'Show', @project_phase_milestone %> |
+    <%= link_to 'Show', @project_phase_milestone %> |
+<%end%>
 <%= link_to 'Back', project_phase_milestones_path %>

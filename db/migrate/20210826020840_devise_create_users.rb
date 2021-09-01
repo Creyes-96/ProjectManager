@@ -40,8 +40,8 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.1]
       t.timestamps null: false
     end
     add_reference :projects, :users, foreign_key:true
-    add_index :users, :first_name,            unique: false
-    add_index :users, :last_name,             unique: false
+    add_index :users, :first_name,           unique: false
+    add_index :users, :last_name,            unique: false
     add_index :users, :username,             unique: true
     add_index :users, :email,                unique: true
     add_index :users, :privilege,            unique: false
