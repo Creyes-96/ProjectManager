@@ -6,7 +6,7 @@ user = User.create_with(
     :username              => "Creyes",
     :password              => "123456",
     :password_confirmation => "123456",
-    :privilege              => "Administrador"
+    :privilege              => "administrador"
 ).find_or_create_by(
     :email                 => "carlos_mlb_reyes@hotmail.com",
 )
@@ -17,7 +17,7 @@ user = User.create_with(
     :username              => "Cr7",
     :password              => "123456",
     :password_confirmation => "123456",
-    :privilege              => "Manager"
+    :privilege              => "manager"
 ).find_or_create_by(
     :email                 => "cr7@hotmail.com",
 )
@@ -28,7 +28,7 @@ user = User.create_with(
     :username              => "Hperez",
     :password              => "123456",
     :password_confirmation => "123456",
-    :privilege              => "Operador"
+    :privilege              => "operador"
 ).find_or_create_by(
     :email                 => "hperez@hotmail.com",
 )

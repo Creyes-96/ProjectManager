@@ -14,7 +14,7 @@ class User < ApplicationRecord
   validates :password_confirmation, presence: true, allow_blank: false
  
 
-  enum privilege: [:Administrador, :Manager, :Operador]
+  enum privilege: [:administrador, :manager, :operador]
 
         
 end

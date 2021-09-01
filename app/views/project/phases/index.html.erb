@@ -1,5 +1,6 @@
 <p id="notice"><%= notice %></p>
 <%= link_to 'Back', projects_path %>
+
 <h1>Project Phases</h1>
 
 <table class="table">
@@ -18,7 +19,7 @@
 
   <tbody>
     <% @project_phases.each do |project_phase| %>
-        <tr>
+        <tr> 
         
             <td class=""><%= project_phase.id %></td>
             <td class=""><%= project_phase.name %></td>

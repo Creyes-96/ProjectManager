@@ -4,7 +4,12 @@ class Ability
     include CanCan::Ability
 
     def initializer(user)
-
+        if user.operador?
+                can :read, :all
+            else
+                can :manage, :all
+            
+        end
  
     
         # Define abilities for the passed in user here. For example:

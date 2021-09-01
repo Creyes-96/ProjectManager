@@ -1,4 +1,5 @@
 class ProjectsController < ApplicationController
+  #load_and_authorize_resource 
   before_action :set_project, only: %i[ show edit update destroy ]
 
   # GET /projects or /projects.json
