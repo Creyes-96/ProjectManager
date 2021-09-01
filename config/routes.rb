@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
-  #namespace :project do
-    #resources :teams
-  #end
     devise_for :users,
     controllers: {:registrations => "registrations"}
 
@@ -10,7 +7,8 @@ Rails.application.routes.draw do
         get "/registrations/new", to: "registrations#new"
         post "/registrations", to: "registrations#create"
     end
-      
+    resources :teams
+    
 
     get 'home/index'
     
@@ -18,7 +16,6 @@ Rails.application.routes.draw do
         
         scope module: :project do
             #projects/1/phases/new
-            resources :teams
             resources :phases do
                 scope module: :phase do
                     resources :activities

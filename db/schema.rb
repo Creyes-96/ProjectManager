@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_31_175723) do
+ActiveRecord::Schema.define(version: 2021_08_27_143455) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,15 +56,6 @@ ActiveRecord::Schema.define(version: 2021_08_31_175723) do
     t.index ["projects_id"], name: "index_project_phases_on_projects_id"
   end
 
-  create_table "project_teams", force: :cascade do |t|
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.bigint "users_id"
-    t.bigint "projects_id"
-    t.index ["projects_id"], name: "index_project_teams_on_projects_id"
-    t.index ["users_id"], name: "index_project_teams_on_users_id"
-  end
-
   create_table "projects", force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -75,6 +66,15 @@ ActiveRecord::Schema.define(version: 2021_08_31_175723) do
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "users_id"
     t.index ["users_id"], name: "index_projects_on_users_id"
+  end
+
+  create_table "teams", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "users_id"
+    t.bigint "projects_id"
+    t.index ["projects_id"], name: "index_teams_on_projects_id"
+    t.index ["users_id"], name: "index_teams_on_users_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -103,7 +103,7 @@ ActiveRecord::Schema.define(version: 2021_08_31_175723) do
   add_foreign_key "project_phase_milestone_notes", "users", column: "users_id"
   add_foreign_key "project_phase_milestones", "project_phases", column: "project_phases_id"
   add_foreign_key "project_phases", "projects", column: "projects_id"
-  add_foreign_key "project_teams", "projects", column: "projects_id"
-  add_foreign_key "project_teams", "users", column: "users_id"
   add_foreign_key "projects", "users", column: "users_id"
+  add_foreign_key "teams", "projects", column: "projects_id"
+  add_foreign_key "teams", "users", column: "users_id"
 end
