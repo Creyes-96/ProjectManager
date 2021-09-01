@@ -2,13 +2,14 @@
 
 <h1>Active users</h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
-      <th class="">First name |</th>
-      <th class="">Last name |</th>
-      <th class="">Username |</th>
+      <th class="">First name</th>
+      <th class="">Last name</th>
+      <th class="">Username</th>
       <th class="">Email</th>
+      <th class="">Privilege</th>
       <th colspan="5"></th>
     </tr>
   </thead>
@@ -20,6 +21,7 @@
         <td class=""><%= user.last_name %></td>
         <td class=""><%= user.username %></td>
         <td class=""><%= user.email %></td>
+        <td class=""><%= user.privilege %></td>
         <td><%= link_to 'Show'%></td>
         <td><%= link_to 'Edit'%></td>
         <td><%= link_to 'Destroy'%></td>
