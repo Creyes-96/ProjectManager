@@ -4,6 +4,7 @@ class Ability
     include CanCan::Ability
 
     def initializer(user)
+
  
     
         # Define abilities for the passed in user here. For example:
