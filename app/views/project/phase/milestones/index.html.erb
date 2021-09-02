@@ -35,5 +35,7 @@
 </table>
 
 <br>
+<% if can? :manage, Project::Phase::Milestone %>
+  <%= link_to 'New Project Phase Milestone', new_project_phase_milestone_path %>
+<% end %>
 
-<%= link_to 'New Project Phase Milestone', new_project_phase_milestone_path %>

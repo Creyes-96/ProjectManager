@@ -42,6 +42,8 @@
 </table>
 
 <br>
+<% if can? :create, Project%>
+  <%= link_to 'New Project', new_project_path %>
+<% end %>
 
-<%= link_to 'New Project', new_project_path %>
 

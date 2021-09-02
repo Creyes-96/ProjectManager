@@ -38,23 +38,32 @@ class Project::Phase::Milestone::NotesController < ApplicationController
     
     # PATCH/PUT /project/phase/milestone/notes/1 or /project/phase/milestone/notes/1.json
     def update
-        respond_to do |format|
-            if @project_phase_milestone_note.update(project_phase_milestone_note_params)
-                format.html { redirect_to "/projects/#{@project_phase_milestone_note.project_phase_milestone.project_phase.project.id}/phases/#{@project_phase_milestone_note.project_phase_milestone.project_phase.id}/milestones/#{@project_phase_milestone_note.project_phase_milestone.id}/notes/#{@project_phase_milestone_note.id}" , notice: "Note was successfully updated." }
-                format.json { render :show, status: :ok, location: @project_phase_milestone_note }
-            else
-                format.html { render :edit, status: :unprocessable_entity }
-                format.json { render json: @project_phase_milestone_note.errors, status: :unprocessable_entity }
+        if can? :update, @project_phase_milestone_note
+            respond_to do |format|
+                if @project_phase_milestone_note.update(project_phase_milestone_note_params)
+                    format.html { redirect_to "/projects/#{@project_phase_milestone_note.project_phase_milestone.project_phase.project.id}/phases/#{@project_phase_milestone_note.project_phase_milestone.project_phase.id}/milestones/#{@project_phase_milestone_note.project_phase_milestone.id}/notes/#{@project_phase_milestone_note.id}" , notice: "Note was successfully updated." }
+                    format.json { render :show, status: :ok, location: @project_phase_milestone_note }
+                else
+                    format.html { render :edit, status: :unprocessable_entity }
+                    format.json { render json: @project_phase_milestone_note.errors, status: :unprocessable_entity }
+                end
             end
         end
     end
     
     # DELETE /project/phase/milestone/notes/1 or /project/phase/milestone/notes/1.json
     def destroy
-        @project_phase_milestone_note.destroy
-        respond_to do |format|
-            format.html { redirect_to "/projects/#{@project_phase_milestone_note.project_phase_milestone.project_phase.project.id}/phases/#{@project_phase_milestone_note.project_phase_milestone.project_phase.id}/milestones/#{@project_phase_milestone_note.project_phase_milestone.id}/notes", notice: "Note was successfully destroyed." }
-            format.json { head :no_content }
+        if can? :update, @project_phase_milestone_note
+            @project_phase_milestone_note.destroy
+            respond_to do |format|
+                format.html { redirect_to "/projects/#{@project_phase_milestone_note.project_phase_milestone.project_phase.project.id}/phases/#{@project_phase_milestone_note.project_phase_milestone.project_phase.id}/milestones/#{@project_phase_milestone_note.project_phase_milestone.id}/notes", notice: "Note was successfully destroyed." }
+                format.json { head :no_content }
+            end
+        else
+            respond_to do |format|
+                format.html { redirect_to "/projects/#{@project_phase_milestone_note.project_phase_milestone.project_phase.project.id}/phases/#{@project_phase_milestone_note.project_phase_milestone.project_phase.id}/milestones/#{@project_phase_milestone_note.project_phase_milestone.id}/notes", notice: "You can't delete other users notes." }
+                format.json { render :show, status: :created, location: @project_phase_activity }
+            end
         end
     end
     

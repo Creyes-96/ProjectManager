@@ -1,71 +1,87 @@
 class ProjectsController < ApplicationController
-  #load_and_authorize_resource 
-  before_action :set_project, only: %i[ show edit update destroy ]
-
-  # GET /projects or /projects.json
-  def index
-    @projects = Project.all
-  end
-
-  # GET /projects/1 or /projects/1.json
-  def show
-  end
-
-  # GET /projects/new
-  def new
-    @project = Project.new
-  end
-
-  # GET /projects/1/edit
-  def edit
-  end
-
-  # POST /projects or /projects.json
-  def create
-    @project = Project.new(project_params)
-    #@project.user = current_user
- 
-    respond_to do |format|
-      if @project.save
-        format.html { redirect_to @project, notice: "Project was successfully created." }
-        format.json { render :show, status: :created, location: @project }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @project.errors, status: :unprocessable_entity }
-      end
+    #load_and_authorize_resource 
+    before_action :set_project, only: %i[ show edit update destroy ]
+    
+    # GET /projects or /projects.json
+    def index
+        @projects = Project.all
     end
-  end
-
-  # PATCH/PUT /projects/1 or /projects/1.json
-  def update
-    respond_to do |format|
-      if @project.update(project_params)
-        format.html { redirect_to @project, notice: "Project was successfully updated." }
-        format.json { render :show, status: :ok, location: @project }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @project.errors, status: :unprocessable_entity }
-      end
+    
+    # GET /projects/1 or /projects/1.json
+    def show
     end
-  end
-
-  # DELETE /projects/1 or /projects/1.json
-  def destroy
-    @project.destroy
-    respond_to do |format|
-      format.html { redirect_to projects_url, notice: "Project was successfully destroyed." }
-      format.json { head :no_content }
+    
+    # GET /projects/new
+    def new
+        @project = Project.new
     end
-  end
-
-  private
+    
+    # GET /projects/1/edit
+    def edit
+    end
+    
+    # POST /projects or /projects.json
+    def create
+        @project = Project.new(project_params)
+        if can? :create, @project 
+            #@project.user = current_user
+        
+            respond_to do |format|
+                if @project.save
+                    format.html { redirect_to @project, notice: "Project was successfully created." }
+                    format.json { render :show, status: :created, location: @project }
+                else
+                    format.html { render :new, status: :unprocessable_entity }
+                    format.json { render json: @project.errors, status: :unprocessable_entity }
+                end
+            end
+        else
+            respond_to do |format|
+            format.html { redirect_to projects_url, notice: "You don't have privileges to create a project." }
+            format.json { render :show, status: :created, location: @project }
+            end
+        end
+    end
+    
+    # PATCH/PUT /projects/1 or /projects/1.json
+    def update
+        if can? :update, @project
+            respond_to do |format|
+                if @project.update(project_params)
+                    format.html { redirect_to @project, notice: "Project was successfully updated." }
+                    format.json { render :show, status: :ok, location: @project }
+                else
+                    format.html { render :edit, status: :unprocessable_entity }
+                    format.json { render json: @project.errors, status: :unprocessable_entity }
+                end
+            end
+        end
+    end
+    
+    # DELETE /projects/1 or /projects/1.json
+    def destroy
+        if can? :destroy, @project
+            @project.destroy
+            respond_to do |format|
+                format.html { redirect_to projects_url, notice: "Project was successfully destroyed." }
+                format.json { head :no_content }
+            end
+        else
+            respond_to do |format|
+                format.html { redirect_to projects_url, notice: "You don't have privileges to destroy a project." }
+                format.json { head :no_content }
+            end
+        end
+    end
+    
+    private
     # Use callbacks to share common setup or constraints between actions.
     def set_project
-      @project = Project.find(params[:id])
+        @project = Project.find(params[:id])
     end
-
+    
     # Only allow a list of trusted parameters through.
     def project_params
-      params.fetch(:project, {}).permit(:name, :description, :state, :start_date, :end_date, :users_id)
+        params.fetch(:project, {}).permit(:name, :description, :state, :start_date, :end_date, :users_id)
     end
 end

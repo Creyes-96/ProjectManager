@@ -9,6 +9,8 @@ class Ability
           
         elsif user.privilege == "manager"
             #CAN
+            can :create, Project
+            can :update, Project
             can :manage, Project::Phase
             can :manage, Project::Phase::Activity
             can :manage, Project::Phase::Milestone
@@ -23,17 +25,19 @@ class Ability
 
 
         elsif user.privilege == "operador"
-            #Update
+            #CAN
             can :update, Project
+            can :update, Project::Phase::Milestone::Note do |note|
+                note.user == user
+            end
+            #CAN NOT
             cannot :manage, User
+            cannot :create, Project
             cannot :manage, Project::Phase
             cannot :manage, Project::Phase::Milestone
             cannot :manage, Project::Phase::Activity
             cannot :manage, Project::Phase::Milestone::Note
 
-            can :update, Project::Phase::Milestone::Note do |note|
-                note.user == user
-            end
         end
  
     
