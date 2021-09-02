@@ -4,7 +4,7 @@ class Project::PhasesController < ApplicationController
     # GET /project/phases or /project/phases.json
     def index
         @project = Project.find_by_id(params[:project_id])
-        @project_phases = @project.project_phases
+        @project_phases = @project.project_phase
     end
     
     # GET /project/phases/1 or /project/phases/1.json

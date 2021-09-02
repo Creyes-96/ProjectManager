@@ -1,6 +1,9 @@
 <p id="notice"><%= notice %></p>
-<%= link_to 'Back', project_phase_milestones_path %>
-<h1>Project Phase Milestone Notes</h1>
+<!--<%= link_to 'Back', project_phase_milestones_path %>-->
+<h6><%= link_to @project.name, projects_path %> > <%=link_to @phase.name, project_phases_path %> > <%= link_to @milestone.name, project_phase_milestones_path %></h6>
+<div class="view-title">
+  <h1>Notes on <%= @milestone.name%></h1>
+</div>
 
 <table class="table">
   <thead>

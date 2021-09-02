@@ -2,9 +2,10 @@ Rails.application.routes.draw do
   #namespace :project do
     #resources :teams
   #end
-    devise_for :users,
-    controllers: {:registrations => "registrations"}
+  devise_for :users,
+  controllers: {:registrations => "registrations"}
 
+  
     as :user do
         get "/registrations", to: "registrations#index"
         get "/registrations/new", to: "registrations#new"
@@ -12,9 +13,8 @@ Rails.application.routes.draw do
         #get "/registration/:id", to: "registrations#show", as: "registration"
         #get "/registrations/:id/edit", to: "registrations#edit", as: "edit_registration"
         #patch "/registration/:id", to: "registrations#update"
-        #put "/registration/:id", to: "registrations#update"
+       # put "/registration/:id", to: "registrations#update"
     end
-      
 
     get 'home/index'
     

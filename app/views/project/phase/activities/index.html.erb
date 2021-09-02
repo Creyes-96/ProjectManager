@@ -1,6 +1,10 @@
 <p id="notice"><%= notice %></p>
-<%= link_to 'Back', project_phases_path %> 
-<h1>Project Phase Activities</h1>
+<!--<%= link_to 'Back', project_phases_path %> <br>-->
+<br> 
+<h6><%= link_to @project.name, projects_path %> > <%=link_to @phase.name, project_phases_path %></h6>
+<div class="view-title">
+  <h1>Activities of <%= @phase.name%></h1>
+</div>
 
 <table class="table">
   <thead>
@@ -10,9 +14,9 @@
       <th class="">Description</th>
       <th class="">Start date</th>
       <th class="">End date</th>
-      <th class="">Phase ID</th>
+      <!--<th class="">Phase ID</th>
       <th class="">Phase</th>
-      <th class="">Project</th>
+      <th class="">Project</th>-->
       <th colspan="9"></th>
     </tr>
   </thead>
@@ -25,9 +29,9 @@
         <td class=""><%= project_phase_activity.description %></td>
         <td class=""><%= project_phase_activity.start_date %></td>
         <td class=""><%= project_phase_activity.end_date %></td>
-        <td class=""><%= project_phase_activity.project_phases_id %></td>
+        <!--<td class=""><%= project_phase_activity.project_phases_id %></td>
         <td class=""><%= project_phase_activity.project_phase.name %></td>
-        <td class=""><%= project_phase_activity.project_phase.project.name %></td>
+        <td class=""><%= project_phase_activity.project_phase.project.name %></td>-->
         <td><%= link_to 'Show', project_phase_activity_url(:id => project_phase_activity.id) %></td>
         <% if can? :manage, project_phase_activity %>
             <td><%= link_to 'Edit', edit_project_phase_activity_path(:id => project_phase_activity.id) %></td>

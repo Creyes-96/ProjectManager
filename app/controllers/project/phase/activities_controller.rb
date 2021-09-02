@@ -3,6 +3,8 @@ class Project::Phase::ActivitiesController < ApplicationController
     
     # GET /project/phase/activities or /project/phase/activities.json
     def index
+        @project = Project.find_by_id(params[:project_id])
+        @phase = Project::Phase.find_by_id(params[:phase_id])
         @project_phase_activities = Project::Phase::Activity.where(project_phases_id: params[:phase_id])
     end
     

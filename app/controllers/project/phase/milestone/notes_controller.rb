@@ -3,6 +3,9 @@ class Project::Phase::Milestone::NotesController < ApplicationController
     
     # GET /project/phase/milestone/notes or /project/phase/milestone/notes.json
     def index
+        @project = Project.find_by_id(params[:project_id])
+        @phase = Project::Phase.find_by_id(params[:phase_id])
+        @milestone = Project::Phase::Milestone.find_by_id(params[:milestone_id])
         @project_phase_milestone_notes = Project::Phase::Milestone::Note.where(project_phase_milestones_id: params[:milestone_id])
     end
     

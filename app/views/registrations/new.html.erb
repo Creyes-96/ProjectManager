@@ -24,9 +24,13 @@
   </div>
 
   <div class="field">
+    <%= f.label :privilege %>
+    <%= f.select(:privilege, User.privileges.keys.map {|privilege| [privilege.titleize,privilege ]}) %>
+  </div>
+  <!--<div class="field">
     <%= f.label :privilege %><br />
     <%= f.text_field :privilege %>
-  </div>
+  </div>-->
 
 
   <div class="field">
