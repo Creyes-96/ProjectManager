@@ -21,13 +21,14 @@ class Ability
             #CAN NOT
             cannot :manage, User
             cannot :destroy, Project
-            
-
 
         elsif user.privilege == "operador"
             #CAN
             can :update, Project
             can :update, Project::Phase::Milestone::Note do |note|
+                note.user == user
+            end
+            can :destroy, Project::Phase::Milestone::Note do |note|
                 note.user == user
             end
             #CAN NOT
@@ -36,11 +37,10 @@ class Ability
             cannot :manage, Project::Phase
             cannot :manage, Project::Phase::Milestone
             cannot :manage, Project::Phase::Activity
-            cannot :manage, Project::Phase::Milestone::Note
+            #cannot :manage, Project::Phase::Milestone::Note
 
         end
  
-    
         # Define abilities for the passed in user here. For example:
         #
         #   user ||= User.new # guest user (not logged in)

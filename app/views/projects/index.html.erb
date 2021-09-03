@@ -32,11 +32,11 @@
         <td><%= link_to 'Show', project %></td>
 
         <% if can? :update, project%>
-        <td><%= link_to 'Edit', edit_project_path(project) %></td>
+          <td><%= link_to 'Edit', edit_project_path(project) %></td>
         <% end %>
 
         <% if can? :destroy, project%>
-        <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <% end %>
       </tr>
     <% end %>

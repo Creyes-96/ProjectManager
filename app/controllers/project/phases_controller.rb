@@ -9,15 +9,18 @@ class Project::PhasesController < ApplicationController
     
     # GET /project/phases/1 or /project/phases/1.json
     def show
+        @phaseshow = Project.find_by_id(params[:project_id])
     end
     
     # GET /project/phases/new
     def new
+        @phasenew = Project.find_by_id(params[:project_id])
         @project_phase = Project::Phase.new
     end
     
     # GET /project/phases/1/edit
     def edit
+        @phaseedit = Project.find_by_id(params[:project_id])
     end
     
     # POST /project/phases or /project/phases.json

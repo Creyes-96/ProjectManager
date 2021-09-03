@@ -15,11 +15,13 @@ class Project::Phase::Milestone::NotesController < ApplicationController
     
     # GET /project/phase/milestone/notes/new
     def new
+        @milestonenew = Project::Phase::Milestone.find_by_id(params[:milestone_id])
         @project_phase_milestone_note = Project::Phase::Milestone::Note.new
     end
     
     # GET /project/phase/milestone/notes/1/edit
     def edit
+        @milestoneedit = Project::Phase::Milestone.find_by_id(params[:milestone_id])
     end
     
     # POST /project/phase/milestone/notes or /project/phase/milestone/notes.json
@@ -56,7 +58,7 @@ class Project::Phase::Milestone::NotesController < ApplicationController
     
     # DELETE /project/phase/milestone/notes/1 or /project/phase/milestone/notes/1.json
     def destroy
-        if can? :update, @project_phase_milestone_note
+        if can? :destroy, @project_phase_milestone_note
             @project_phase_milestone_note.destroy
             respond_to do |format|
                 format.html { redirect_to "/projects/#{@project_phase_milestone_note.project_phase_milestone.project_phase.project.id}/phases/#{@project_phase_milestone_note.project_phase_milestone.project_phase.id}/milestones/#{@project_phase_milestone_note.project_phase_milestone.id}/notes", notice: "Note was successfully destroyed." }

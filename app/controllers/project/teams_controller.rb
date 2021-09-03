@@ -22,10 +22,10 @@ class Project::TeamsController < ApplicationController
   # POST /project/teams or /project/teams.json
   def create
     @project_team = Project::Team.new(project_team_params)
-
+    @project_team.project = Project.find_by_id(params[:project_id])
     respond_to do |format|
       if @project_team.save
-        format.html { redirect_to @project_team, notice: "Team was successfully created." }
+        format.html { redirect_to project_teams_url, notice: "Team was successfully created." }
         format.json { render :show, status: :created, location: @project_team }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -64,6 +64,6 @@ class Project::TeamsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def project_team_params
-      params.fetch(:project_team, {})
+      params.fetch(:project_team, {}).permit(:users_id)
     end
 end

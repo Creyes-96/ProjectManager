@@ -10,8 +10,12 @@
       </ul>
     </div>
   <% end %>
+  <div class="field">
+    <%= form.label :users_id %>
+    <%= form.collection_select :users_id, User.order(:id),:id, :username %> <br>
+  </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "Add member" %>
   </div>
 <% end %>

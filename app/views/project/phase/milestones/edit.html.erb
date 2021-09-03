@@ -1,5 +1,7 @@
 <% if can? :manage, @project_phase_milestone %>
-    <h1>Editing Project Phase Milestone</h1>
+    <div class="view-title">
+        <h1>Editing <%= @phaseedit.name%> milestone</h1>
+    </div>
 
     <%= render 'form', project_phase_milestone: @project_phase_milestone %>
 

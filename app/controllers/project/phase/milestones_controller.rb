@@ -14,11 +14,13 @@ class Project::Phase::MilestonesController < ApplicationController
     
     # GET /project/phase/milestones/new
     def new
+        @phasenew = Project::Phase.find_by_id(params[:phase_id])
         @project_phase_milestone = Project::Phase::Milestone.new
     end
     
     # GET /project/phase/milestones/1/edit
     def edit
+        @phaseedit = Project::Phase.find_by_id(params[:phase_id])
     end
     
     # POST /project/phase/milestones or /project/phase/milestones.json

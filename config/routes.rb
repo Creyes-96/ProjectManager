@@ -13,7 +13,7 @@ Rails.application.routes.draw do
         #get "/registration/:id", to: "registrations#show", as: "registration"
         #get "/registrations/:id/edit", to: "registrations#edit", as: "edit_registration"
         #patch "/registration/:id", to: "registrations#update"
-       # put "/registration/:id", to: "registrations#update"
+        #put "/registration/:id", to: "registrations#update"
     end
 
     get 'home/index'

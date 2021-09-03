@@ -1,5 +1,6 @@
 class RegistrationsController < Devise::RegistrationsController
     skip_before_action :require_no_authentication, only: [:new, :create]
+    
     def index
         @users = User.all
     end
@@ -18,12 +19,12 @@ class RegistrationsController < Devise::RegistrationsController
     end
 
     def edit
-        puts params, "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
+        puts params, "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
         @user = User.find(params[:id])
     end
 
     def update
-        puts params, "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
+        puts params, "uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu"
         @user = User.find(params[:id])
         if @user.update(user_params)
             redirect_to registrations_path

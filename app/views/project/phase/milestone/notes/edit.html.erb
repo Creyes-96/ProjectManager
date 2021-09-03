@@ -1,6 +1,12 @@
-<h1>Editing Project Phase Milestone Note</h1>
+<% if can? :update, @project_phase_milestone_note %>
+    <div class="view-title">
+        <h1>Notes on <%= @milestoneedit.name%></h1>
+    </div>
 
-<%= render 'form', project_phase_milestone_note: @project_phase_milestone_note %>
+    <%= render 'form', project_phase_milestone_note: @project_phase_milestone_note %>
 
-<%= link_to 'Show', @project_phase_milestone_note %> |
+    <%= link_to 'Show', @project_phase_milestone_note %> |
+    
+    <% end %>
+    
 <%= link_to 'Back', project_phase_milestone_notes_path %>
