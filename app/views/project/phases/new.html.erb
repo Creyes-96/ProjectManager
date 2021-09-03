@@ -1,7 +1,7 @@
 <% if can? :manage, @project_phase %>
-<div class="view-title">
+
     <h1> New Phase for <%= @phasenew.name %></h1>
-</div>
+
 
     <%= render 'form', project_phase: @project_phase %>
 

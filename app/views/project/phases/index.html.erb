@@ -14,9 +14,9 @@
       <th class="">Description</th>
       <th class="">Start date</th>
       <th class="">End date</th>
-      <th class="">Project ID</th>
-      <th class="">Project</th>
-      <th colspan="7"></th>
+      <!--<th class="">Project ID</th>
+      <th class="">Project</th>-->
+      <th colspan="6"></th>
     </tr>
   </thead>
 
@@ -29,8 +29,8 @@
             <td class=""><%= project_phase.description %></td>
             <td class=""><%= project_phase.start_date %></td>
             <td class=""><%= project_phase.end_date %></td>
-            <td class=""><%= project_phase.projects_id %></td>
-            <td class=""><%= project_phase.project.name %></td>
+            <!--<td class=""><%= project_phase.projects_id %></td>
+            <td class=""><%= project_phase.project.name %></td>-->
             <td><%= link_to 'Show', project_phase_url(:id => project_phase.id) %></td>
             <% if can? :manage, project_phase%>
                 <td><%= link_to 'Edit', edit_project_phase_path(:id => project_phase.id) %></td>

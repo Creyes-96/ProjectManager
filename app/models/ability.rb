@@ -12,6 +12,11 @@ class Ability
             can :create, Project
             can :update, Project
             can :manage, Project::Phase
+            
+            can :manage, Project::Team do |team|
+                team.project.users_id == user.id
+            end
+
             can :manage, Project::Phase::Activity
             can :manage, Project::Phase::Milestone
             can :update, Project::Phase::Milestone::Note do |note|
@@ -25,6 +30,9 @@ class Ability
         elsif user.privilege == "operador"
             #CAN
             can :update, Project
+            can :manage, Project::Team do |team|
+                team.project.users_id == user.id
+            end
             can :update, Project::Phase::Milestone::Note do |note|
                 note.user == user
             end
@@ -35,6 +43,7 @@ class Ability
             cannot :manage, User
             cannot :create, Project
             cannot :manage, Project::Phase
+            #cannot :manage, Project::Team
             cannot :manage, Project::Phase::Milestone
             cannot :manage, Project::Phase::Activity
             #cannot :manage, Project::Phase::Milestone::Note

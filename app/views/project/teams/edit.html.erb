@@ -1,6 +1,10 @@
-<h1>Editing Project Team</h1>
+<% if can? :manage, @project_team %>
+    <h1> Editing <%= @projectedit.name %> team</h1>
 
-<%= render 'form', project_team: @project_team %>
+    <%= render 'form', project_team: @project_team %>
 
-<%= link_to 'Show', @project_team %> |
+    <%= link_to 'Show', @project_team %> |
+    
+<% end %>
+    
 <%= link_to 'Back', project_teams_path %>

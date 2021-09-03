@@ -1,7 +1,5 @@
 <% if can? :manage, @project_phase %>
-    <div class="view-title">
-        <h1> Editing <%= @phaseedit.name %> phase</h1>
-    </div>
+    <h1> Editing <%= @phaseedit.name %> phase</h1>
 
     <%= render 'form', project_phase: @project_phase %>
 

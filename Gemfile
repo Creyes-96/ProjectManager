@@ -16,6 +16,8 @@ gem 'rails-assets-bulma', source: 'https://rails-assets.org'
 group :development, :test do
   gem 'rspec-rails', '~> 5.0.0'
 end
+# Bootstrap gem
+gem "bootstrap_form", "~> 4.0"
 
 # A library for generating fake data such as names
 gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'

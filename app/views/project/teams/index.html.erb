@@ -1,22 +1,27 @@
 <p id="notice"><%= notice %></p>
-
-<h1>Project Teams</h1>
+<h6><%= link_to @project.name, projects_path%></h6>
+<h1>Project team for <%= @project.name%></h1>
 
 <table class="table">
   <thead>
     <tr>
       <th class="">ID Member</th>
       <th class="">Members</th>
-      <th colspan="5"></th>
+      <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @project_teams.each do |project_team| %>
-      <tr>
-          <td class=""><%= project_team.id %></td>
-          <td class=""><%= project_team.user.username %></td>
-      </tr>
+        <tr>
+            <td class=""><%= project_team.id %></td>
+            <td class=""><%= project_team.user.username %></td>
+            <td><%= link_to 'Show', project_team_url(:id => project_team.id) %></td>
+            <% if can? :manage, project_team%>
+                <td><%= link_to 'Edit', edit_project_team_path(:id => project_team.id) %></td>
+                <td><%= link_to 'Destroy', project_team_path(project_team.project, project_team), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <% end %>
+        </tr>
     <% end %>
   </tbody>
 </table>
